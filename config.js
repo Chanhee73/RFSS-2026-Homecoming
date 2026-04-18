@@ -38,12 +38,12 @@ const CONFIG = {
   },
 
   wedding: {
-    date: "2025-01-01",
-    time: "13:00",
-    venue: "예식장 이름",
-    hall: "3층 그랜드홀",
-    address: "서울특별시 강남구 테헤란로 123",
-    tel: "02-1234-5678",
+    date: "2026-05-16",
+    time: "14:00",
+    venue: "KAIST E3-2",
+    hall: "1층 1220호",
+    address: "대전광역시 유성구 대학로 291",
+    tel: "042-350-5478",
     mapLinks: {
       kakao: "",
       naver: ""
