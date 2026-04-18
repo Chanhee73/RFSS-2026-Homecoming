@@ -277,7 +277,7 @@
       gcalBtn.addEventListener('click', () => {
         const start = formatGoogleDate(weddingDate);
         const end = formatGoogleDate(new Date(weddingDate.getTime() + 2 * 60 * 60 * 1000));
-        const title = encodeURIComponent(`${c.groom.name} ♥ ${c.bride.name} 결혼식`);
+        const title = encodeURIComponent(`2026 RFSS 홈커밍데이`);
         const location = encodeURIComponent(`${c.wedding.venue} ${c.wedding.address}`);
         const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&location=${location}`;
         window.open(url, '_blank');
