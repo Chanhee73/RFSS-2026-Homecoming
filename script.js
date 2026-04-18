@@ -112,7 +112,7 @@
     // 커튼 내용 채우기
     const names = $('.curtain-names', overlay);
     const date = $('.curtain-date', overlay);
-    if (names) names.textContent = `${c.groom.nameEn} & ${c.bride.nameEn}`;
+    if (names) names.textContent = '2026 RFSS Homecoming Day';
     if (date) date.textContent = `${dateInfo.year}. ${String(dateInfo.month).padStart(2, '0')}. ${String(dateInfo.day).padStart(2, '0')}`;
 
     // 열기 버튼
@@ -159,7 +159,6 @@
     ]);
 
     // Render image-dependent sections
-    buildStoryImages(storyImages);
     buildGallery(galleryImages);
 
     // Remove loading state
@@ -194,7 +193,7 @@
 
     const heroNames = $('.hero-names');
     if (heroNames) {
-      heroNames.innerHTML = `${c.groom.nameEn}<span class="ampersand">&</span>${c.bride.nameEn}`;
+      heroNames.textContent = '2026 KAIST RFSS Homecoming Day';
     }
 
     const heroDate = $('.hero-date');
@@ -210,6 +209,11 @@
 
   // ── Invitation ──
   function buildInvitation(c, dateInfo, timeText) {
+    const title = $('#invitation-title');
+    if (title) {
+      title.textContent = c.invitation.title;
+    }
+
     const msg = $('.invitation-message');
     if (msg) {
       msg.textContent = c.invitation.message;
@@ -217,18 +221,9 @@
 
     const parents = $('.invitation-parents');
     if (parents) {
-      function parentLine(side) {
-        const fatherName = side.father;
-        const motherName = side.mother;
-        const fatherDec = side.fatherDeceased ? ' class="deceased"' : '';
-        const motherDec = side.motherDeceased ? ' class="deceased"' : '';
-        return `<span${fatherDec}>${fatherName}</span> <span class="dot"></span> <span${motherDec}>${motherName}</span><span style="color:#999;margin-left:4px">의 ${side === c.groom ? '아들' : '딸'}</span> <strong>${side.name}</strong>`;
-      }
-      parents.innerHTML = `
-        <div class="parent-line">${parentLine(c.groom)}</div>
-        <div class="parent-line">${parentLine(c.bride)}</div>
-      `;
+      parents.innerHTML = "2026년 05월 01일<br>RFSS 연구실 재학생 일동";
     }
+
   }
 
   // ── Countdown ──
@@ -267,7 +262,7 @@
       if (secsEl) secsEl.textContent = secs;
 
       if (ddayEl) {
-        ddayEl.textContent = `결혼식까지 D-${days}`;
+        ddayEl.textContent = `교수님, 그리고 선·후배님과의 만남까지 D-${days}`;
       }
     }
 
@@ -328,28 +323,67 @@
   // ── Story (text only, rendered immediately) ──
   function buildStoryText(c) {
     const title = $('#story-title');
+    const table = $('#program-table');
+    const games = $('#program-games');
+    const survey = $('#program-survey');
+
     if (title) title.textContent = c.story.title;
 
-    const content = $('.story-content');
-    if (content) content.textContent = c.story.content;
-  }
-
-  // ── Story Images (rendered after auto-detection) ──
-  function buildStoryImages(storyImages) {
-    const container = $('.story-images');
-    if (!container) return;
-
-    if (storyImages.length === 0) {
-      container.style.display = 'none';
-      return;
+    if (table && c.story.schedule) {
+      table.innerHTML = `
+        <div class="program-header">
+          <div class="program-col-time">시간</div>
+          <div class="program-col-program">내용</div>
+          <div class="program-col-place">장소</div>
+        </div>
+        ${c.story.schedule.map(row => `
+          <div class="program-row">
+            <div class="program-col-time">${row.time}</div>
+            <div class="program-col-program">${row.program}</div>
+            <div class="program-col-place">${row.place}</div>
+          </div>
+        `).join('')}
+      `;
     }
 
-    container.innerHTML = storyImages.map((src, i) =>
-      `<div class="story-image-item">
-        <img src="${src}" alt="Our story ${i + 1}" loading="lazy">
-      </div>`
-    ).join('');
+    if (games) {
+      const makeChips = (items = []) =>
+        items.map(item => `<span class="game-chip">${item}</span>`).join('');
+
+      games.innerHTML = `
+        <div class="program-games-grid">
+          <div class="program-game-card">
+            <div class="program-game-title">단체전 종목 (청백전)</div>
+            <div class="program-game-chips">
+              ${makeChips(c.story.teamGames)}
+            </div>
+          </div>
+
+          <div class="program-game-card">
+            <div class="program-game-title">개인전 종목 (상시 부스)</div>
+            <div class="program-game-chips">
+              ${makeChips(c.story.individualGames)}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    if (survey) {
+      survey.innerHTML = `
+        <p class="program-survey-text">단체전 참가 희망 종목 설문조사 링크</p>
+        <a
+          class="program-survey-link"
+          href="https://forms.gle/fhdA5NMY4sGa7W8M6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://forms.gle/fhdA5NMY4sGa7W8M6
+        </a>
+      `;
+    }
   }
+
 
   // ── Gallery (rendered after auto-detection) ──
   let galleryAllImages = [];
@@ -527,47 +561,35 @@
   }
 
   // ── Account ──
-  function buildAccount(c) {
-    buildAccountGroup('groom', c.accounts.groom, `신랑측 계좌번호`);
-    buildAccountGroup('bride', c.accounts.bride, `신부측 계좌번호`);
-  }
+    function buildAccount(c) {
+      buildAccountGroup('groom', c.accounts.groom);
+    }
 
-  function buildAccountGroup(side, accounts, label) {
+  function buildAccountGroup(side, accounts) {
     const group = $(`#account-${side}`);
     if (!group) return;
 
-    const toggle = $('.account-group-toggle', group);
     const list = $('.account-list', group);
+    if (!list) return;
 
-    if (toggle) {
-      const labelEl = toggle.querySelector('.toggle-label');
-      if (labelEl) labelEl.textContent = label;
-
-      toggle.addEventListener('click', () => {
-        group.classList.toggle('open');
-      });
-    }
-
-    if (list) {
-      list.innerHTML = accounts.map(acc =>
-        `<div class="account-item">
-          <div class="account-info">
-            <div class="account-role">${acc.role}</div>
-            <div class="account-detail">
-              <span class="account-name">${acc.name}</span>
-              ${acc.bank} ${acc.number}
-            </div>
+    list.innerHTML = accounts.map(acc =>
+      `<div class="account-item">
+        <div class="account-info">
+          <div class="account-role">${acc.role}</div>
+          <div class="account-detail">
+            <span class="account-name">${acc.name}</span>
+            ${acc.bank} ${acc.number}
           </div>
-          <button class="btn-copy-account" data-copy="${acc.bank} ${acc.number} ${acc.name}">복사</button>
-        </div>`
-      ).join('');
+        </div>
+        <button class="btn-copy-account" data-copy="${acc.bank} ${acc.number} ${acc.name}">복사</button>
+      </div>`
+    ).join('');
 
-      $$('.btn-copy-account', list).forEach(btn => {
-        btn.addEventListener('click', () => {
-          copyToClipboard(btn.dataset.copy, '계좌번호가 복사되었습니다');
-        });
+    $$('.btn-copy-account', list).forEach(btn => {
+      btn.addEventListener('click', () => {
+        copyToClipboard(btn.dataset.copy, '계좌번호가 복사되었습니다');
       });
-    }
+    });
   }
 
   // ── Scroll Animations ──
