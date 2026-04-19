@@ -262,7 +262,7 @@
       if (secsEl) secsEl.textContent = secs;
 
       if (ddayEl) {
-        ddayEl.textContent = `교수님, 그리고 선·후배님과의 만남까지 D-${days}`;
+        ddayEl.textContent = `RFSS 홈커밍데이까지 D-${days}`;
       }
     }
 
