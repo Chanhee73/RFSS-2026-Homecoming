@@ -626,18 +626,18 @@
       `<div class="account-item">
         <div class="account-info">
           <div class="account-role">${acc.role}</div>
-          <div class="account-detail">
+          <div class="account-detail account-copy-target"
+               data-copy="${acc.bank} ${acc.number}">
             <span class="account-name">${acc.name}</span>
             ${acc.bank} ${acc.number}
           </div>
         </div>
-        <button class="btn-copy-account" data-copy="${acc.bank} ${acc.number} ${acc.name}">복사</button>
       </div>`
     ).join('');
 
-    $$('.btn-copy-account', list).forEach(btn => {
-      btn.addEventListener('click', () => {
-        copyToClipboard(btn.dataset.copy, '계좌번호가 복사되었습니다');
+    $$('.account-copy-target', list).forEach(el => {
+      el.addEventListener('click', () => {
+        copyToClipboard(el.dataset.copy, '계좌번호가 복사되었습니다');
       });
     });
   }
