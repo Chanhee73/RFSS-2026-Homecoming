@@ -43,8 +43,9 @@ const CONFIG = {
   },
 
   wedding: {
-    date: "2026-05-01",
-    time: "14:00"
+    date: "2026-05-16",
+    time: "14:00",
+    venue: "KAIST 정보전자공학동 (E3-2) 및 대운동장 (E17)"
   },
 
   locations: [

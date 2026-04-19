@@ -292,12 +292,12 @@
         const ics = [
           'BEGIN:VCALENDAR',
           'VERSION:2.0',
-          'PRODID:-//Wedding//Invitation//KO',
+          'PRODID:-//RFSS_Homecoming//Invitation//KO',
           'BEGIN:VEVENT',
           `DTSTART:${start}`,
           `DTEND:${end}`,
-          `SUMMARY:${c.groom.name} ♥ ${c.bride.name} 결혼식`,
-          `LOCATION:${c.wedding.venue} ${c.wedding.address}`,
+          `SUMMARY:2026 RFSS 홈커밍데이`,
+          `LOCATION:KAIST E3-2 1220호`,
           'END:VEVENT',
           'END:VCALENDAR'
         ].join('\r\n');
@@ -305,7 +305,7 @@
         const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'wedding.ics';
+        link.download = 'RFSS_Homecoming.ics';
         link.click();
         URL.revokeObjectURL(link.href);
       });
