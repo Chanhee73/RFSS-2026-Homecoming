@@ -412,7 +412,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0px 8px;
+  gap: 6px 8px;
 }
 
 .game-chip {
