@@ -80,7 +80,7 @@ a {
 
 /* ── Section Common ── */
 .section {
-  padding: 80px 28px;
+  padding: 0px 28px;
 }
 
 .section-label {
@@ -656,7 +656,7 @@ a {
 
 /* ── Location Section ── */
 .location {
-  background: #fff;
+  background: #fafafa;
 }
 
 .location-header {
@@ -745,6 +745,77 @@ a {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.location-block {
+  display: block;
+}
+
+
+/* ── Contact Section ── */
+.contact {
+  background: #fff;
+  text-align: center;
+}
+
+.contact-header {
+  margin-bottom: 32px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contact-column {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.contact-column-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-name {
+  font-weight: 500;
+  color: #222;
+}
+
+.contact-phone {
+  color: #666;
+  text-decoration: none;
+}
+
+.contact-phone:hover {
+  color: #000;
 }
 
 /* ── Account Section ── */
@@ -861,7 +932,7 @@ a {
 /* ── Responsive ── */
 @media (min-width: 768px) {
   .section {
-    padding: 100px 36px;
+    padding: 72px 36px;
   }
 
   .hero {
@@ -887,7 +958,7 @@ a {
 
 @media (min-width: 1024px) {
   .section {
-    padding: 120px 40px;
+    padding: 84px 40px;
   }
 
   .hero-names {

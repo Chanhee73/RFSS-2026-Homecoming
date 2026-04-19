@@ -145,6 +145,7 @@
     buildCountdown(c, dateInfo);
     buildStoryText(c);
     buildLocation(c);
+    buildContact(c);
     buildAccount(c);
     initScrollAnimations();
     initModal();
@@ -262,7 +263,7 @@
       if (secsEl) secsEl.textContent = secs;
 
       if (ddayEl) {
-        ddayEl.textContent = `RFSS 홈커밍데이까지 D-${days}`;
+        ddayEl.textContent = `RFSS 홈커밍데이 D-${days}`;
       }
     }
 
@@ -526,37 +527,86 @@
 
   // ── Location ──
   function buildLocation(c) {
-    const venueName = $('.location-venue-name');
-    const venueHall = $('.location-venue-hall');
-    const address = $('.location-address');
-    const tel = $('.location-tel');
-    const mapImg = $('.location-map-image img');
+    const list = $('.location-list');
+    if (!list) return;
 
-    if (venueName) venueName.textContent = c.wedding.venue;
-    if (venueHall) venueHall.textContent = c.wedding.hall;
-    if (address) address.textContent = c.wedding.address;
-    if (tel && c.wedding.tel) {
-      tel.innerHTML = `<a href="tel:${c.wedding.tel}">${c.wedding.tel}</a>`;
-    }
-    if (mapImg) {
-      mapImg.src = 'images/location/1.jpg';
-      mapImg.alt = `${c.wedding.venue} 약도`;
+    const locations = c.locations || [];
+    if (locations.length === 0) {
+      list.style.display = 'none';
+      return;
     }
 
-    // Copy address
-    const copyBtn = $('#btn-copy-address');
-    copyBtn?.addEventListener('click', () => {
-      copyToClipboard(c.wedding.address, '주소가 복사되었습니다');
+    list.innerHTML = locations.map((loc, i) => `
+      <div class="location-block">
+        <div class="location-info">
+          <div class="location-venue-name">${loc.venue || ''}</div>
+          <div class="location-venue-hall">${loc.hall || ''}</div>
+          <div class="location-address">${loc.address || ''}</div>
+          ${loc.tel ? `<div class="location-tel"><a href="tel:${loc.tel}">${loc.tel}</a></div>` : ''}
+        </div>
+
+        <div class="location-map-image">
+          <img src="${loc.mapImage || ''}" alt="${loc.venue || '약도'}" loading="lazy">
+        </div>
+
+        <div class="location-actions">
+          <button type="button" class="btn-copy-address" data-address="${loc.address || ''}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+            </svg>
+            주소 복사
+          </button>
+
+          <a href="${loc.mapLinks?.kakao || '#'}" class="link-kakao-map" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            카카오맵
+          </a>
+
+          <a href="${loc.mapLinks?.naver || '#'}" class="link-naver-map" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            네이버지도
+          </a>
+        </div>
+      </div>
+    `).join('');
+
+    $$('.btn-copy-address', list).forEach(btn => {
+      btn.addEventListener('click', () => {
+        copyToClipboard(btn.dataset.address, '주소가 복사되었습니다');
+      });
     });
+  }
 
-    // Map links
-    const kakaoLink = $('#link-kakao-map');
-    const naverLink = $('#link-naver-map');
-    if (kakaoLink && c.wedding.mapLinks.kakao) {
-      kakaoLink.href = c.wedding.mapLinks.kakao;
+  function buildContact(c) {
+    const phdList = $('#contact-phd');
+    const masterList = $('#contact-master');
+
+    const phd = c.contacts?.phd || [];
+    const master = c.contacts?.master || [];
+
+    if (phdList) {
+      phdList.innerHTML = phd.map(person => `
+        <div class="contact-item">
+          <span class="contact-name">${person.name}</span>
+          <a class="contact-phone" href="tel:${person.phone}">${person.phone}</a>
+        </div>
+      `).join('');
     }
-    if (naverLink && c.wedding.mapLinks.naver) {
-      naverLink.href = c.wedding.mapLinks.naver;
+
+    if (masterList) {
+      masterList.innerHTML = master.map(person => `
+        <div class="contact-item">
+          <span class="contact-name">${person.name}</span>
+          <a class="contact-phone" href="tel:${person.phone}">${person.phone}</a>
+        </div>
+      `).join('');
     }
   }
 

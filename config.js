@@ -43,17 +43,34 @@ const CONFIG = {
   },
 
   wedding: {
-    date: "2026-05-16",
-    time: "14:00",
-    venue: "KAIST 정보전자공학동 (E3-2) 및 대운동장 (E17)",
-    hall: "1층 제2공동강의실 (1220호)",
-    address: "대전광역시 유성구 대학로 291",
-    tel: "",
-    mapLinks: {
-      kakao: "https://place.map.kakao.com/17568433",
-      naver: "https://naver.me/GWW53qaw"
-    }
+    date: "2026-05-01",
+    time: "14:00"
   },
+
+  locations: [
+    {
+      venue: "KAIST 정보전자공학동 (E3-2) 및 대운동장 (E17)",
+      hall: "1층 제2공동강의실 (1220호)",
+      address: "대전광역시 유성구 대학로 291",
+      tel: "",
+      mapImage: "images/location/1.jpg",
+      mapLinks: {
+        kakao: "첫 번째 장소 카카오맵 링크",
+        naver: "첫 번째 장소 네이버지도 링크"
+      }
+    },
+    {
+      venue: "저녁 식사 장소",
+      hall: "하늘천숯불갈비 대전유성점 (태평소국밥 본점 옆)",
+      address: "대전광역시 온천동로65번길 54 1층\n ",
+      tel: "",
+      mapImage: "images/location/2.jpg",
+      mapLinks: {
+        kakao: "https://place.map.kakao.com/1884429679",
+        naver: "https://naver.me/5S9QX3SN"
+      }
+    }
+  ],
 
   // ── 인사말 ──
   invitation: {
@@ -70,7 +87,7 @@ const CONFIG = {
       "감사합니다"
   },
 
-  // ── 우리의 이야기 ──
+  // ── 프로그램 안내 ──
   story: {
     title: "프로그램 안내",
     schedule: [
@@ -98,6 +115,25 @@ const CONFIG = {
   // ── 오시는 길 ──
   // (mapLinks는 wedding 객체 내에 포함)
 
+  contacts: {
+    phd: [
+      { name: "이지훈", phone: "010-4417-4615" },
+      { name: "이효원", phone: "010-4927-7556" },
+      { name: "이찬희", phone: "010-9023-2714" },
+      { name: "조성준", phone: "010-3863-3610" },
+      { name: "조현정", phone: "010-3231-9105" },
+      { name: "김지영", phone: "010-5029-0864" },
+      { name: "서영주", phone: "010-9949-7332" },
+      { name: "임영준", phone: "010-2248-7198" }
+    ],
+    master: [
+      { name: "김윤성", phone: "010-9876-0616" },
+      { name: "김준현", phone: "010-2628-9778" },
+      { name: "강해찬", phone: "010-9554-3773" },
+      { name: "이병주", phone: "010-3763-5794" }
+    ]
+  },
+
   // ── 마음 전하실 곳 ──
   accounts: {
     groom: [
@@ -108,7 +144,7 @@ const CONFIG = {
   // ── 링크 공유 시 나타나는 문구 ──
   kakaoShare: {
     jsKey: "",
-    title: "결혼식에 초대합니다",
+    title: "RFSS 홈커밍데이에 초대합니다",
     description: ""
   }
 
