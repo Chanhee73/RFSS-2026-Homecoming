@@ -429,6 +429,17 @@ a {
   word-break: keep-all;
 }
 
+.game-chip-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.game-chip-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
 .program-survey {
   margin-top: 28px;
   text-align: center;
@@ -927,11 +938,11 @@ a {
 /* ── Responsive ── */
 @media (min-width: 768px) {
   .section {
-    padding: 72px 36px;
+    padding: 54px 36px;
   }
 
   .hero {
-    max-height: 960px;
+    max-height: 72px;
   }
 
   .hero-names {

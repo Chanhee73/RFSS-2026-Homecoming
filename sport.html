@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>종목 안내</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sport.css">
+</head>
+<body>
+  <div class="wrapper">
+    <section class="section sport-detail">
+      <div class="sport-back">
+        <a href="index.html#program">← 프로그램 안내로 돌아가기</a>
+      </div>
+
+      <div class="sport-header">
+        <div class="section-label">SPORT</div>
+        <div class="section-title" id="sport-title"></div>
+      </div>
+
+      <div class="sport-image-wrap">
+        <img id="sport-image" src="" alt="">
+      </div>
+
+      <div class="sport-content">
+        <div class="sport-block">
+          <div class="sport-block-title">종목 설명</div>
+          <p id="sport-description"></p>
+        </div>
+
+        <div class="sport-block">
+          <div class="sport-block-title">규칙</div>
+          <ul id="sport-rules"></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="sport.js"></script>
+</body>
+</html>

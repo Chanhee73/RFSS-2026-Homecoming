@@ -56,49 +56,17 @@
 
   <!-- ====== Countdown ====== -->
   <section class="section countdown fade-in">
-    <div class="countdown-grid">
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-days">0</span>
-        <span class="countdown-unit">Days</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-hours">0</span>
-        <span class="countdown-unit">Hours</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-mins">0</span>
-        <span class="countdown-unit">Min</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-number" id="cd-secs">0</span>
-        <span class="countdown-unit">Sec</span>
-      </div>
-    </div>
-    <div class="countdown-dday"></div>
-    <div class="countdown-calendar-buttons">
-      <button class="btn-calendar" id="btn-gcal" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        Google
-      </button>
-      <button class="btn-calendar" id="btn-ical" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-        Apple
-      </button>
+    <div class="section-label"></div>
+    <div class="section-title">5월 16일 토요일 14시</div>
+
+    <div class="countdown-simple">
+      <div class="countdown-date" id="countdown-date"></div>
+      <div class="countdown-dday" id="countdown-dday"></div>
     </div>
   </section>
 
   <!-- ====== Programme ====== -->
-  <section class="section story fade-in">
+  <section class="section story fade-in" id="program">
     <div class="section-label">Programme</div>
     <h2 class="section-title" id="story-title"></h2>
 
@@ -163,7 +131,7 @@
   <section class="section account fade-in">
     <div class="account-header">
       <div class="section-label">Account</div>
-      <div class="section-title">참가비 또는 마음 전하실 곳</div>
+      <div class="section-title">참가비 (100,000원) 또는 응원비 (50,000원)</div>
     </div>
 
     <div class="account-group" id="account-groom">

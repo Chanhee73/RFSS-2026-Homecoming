@@ -1,0 +1,64 @@
+.sport-detail {
+  background: #fff;
+}
+
+.sport-back {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.sport-back a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sport-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.sport-image-wrap {
+  margin-bottom: 28px;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.sport-image-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sport-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sport-block-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+#sport-description {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+#sport-rules {
+  margin: 0;
+  padding-left: 20px;
+  color: #444;
+  line-height: 1.8;
+}
+
+#sport-rules li + li {
+  margin-top: 6px;
+}

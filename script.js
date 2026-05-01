@@ -348,22 +348,26 @@
     }
 
     if (games) {
-      const makeChips = (items = []) =>
-        items.map(item => `<span class="game-chip">${item}</span>`).join('');
+      const makeGameLinks = (items = []) =>
+        items.map(item => `
+          <a class="game-chip game-chip-link" href="sport.html?game=${item.slug}">
+            ${item.title}
+          </a>
+        `).join('');
 
       games.innerHTML = `
         <div class="program-games-grid">
           <div class="program-game-card">
             <div class="program-game-title">단체전 종목 (청백전)</div>
             <div class="program-game-chips">
-              ${makeChips(c.story.teamGames)}
+              ${makeGameLinks(c.story.teamGames)}
             </div>
           </div>
 
           <div class="program-game-card">
-            <div class="program-game-title">개인전 종목 (상시 부스)</div>
+            <div class="program-game-title">개인전 종목 (개별 상품)</div>
             <div class="program-game-chips">
-              ${makeChips(c.story.individualGames)}
+              ${makeGameLinks(c.story.individualGames)}
             </div>
           </div>
         </div>
@@ -372,7 +376,7 @@
 
     if (survey) {
       survey.innerHTML = `
-        <p class="program-survey-text">단체전 참가 희망 종목 설문조사 링크</p>
+        <p class="program-survey-text">단체전 참가 희망 종목 설문조사 링크 (5월 5일까지)</p>
         <a
           class="program-survey-link"
           href="https://forms.gle/fhdA5NMY4sGa7W8M6"
