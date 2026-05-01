@@ -358,14 +358,14 @@
       games.innerHTML = `
         <div class="program-games-grid">
           <div class="program-game-card">
-            <div class="program-game-title">단체전 종목 (청백전)</div>
+            <div class="program-game-title">단체전 종목 설명 (청백전)</div>
             <div class="program-game-chips">
               ${makeGameLinks(c.story.teamGames)}
             </div>
           </div>
 
           <div class="program-game-card">
-            <div class="program-game-title">개인전 종목 (개별 상품)</div>
+            <div class="program-game-title">개인전 종목 설명 (개별 상품)</div>
             <div class="program-game-chips">
               ${makeGameLinks(c.story.individualGames)}
             </div>
